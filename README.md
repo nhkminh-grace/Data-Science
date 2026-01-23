@@ -1,2 +1,5 @@
 # Data-Science
-A line
+A music data analysis project using R and SpotifyAPI.
+
+Collaborators:
+
