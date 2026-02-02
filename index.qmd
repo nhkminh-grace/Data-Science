@@ -1,32 +1,43 @@
 ---
-title: Intergenerational Similarity in Musical Preferences
-author: Group
+title: \small Intergenerational Similarity in Musical Preferences
+author: Mysterious Group
 format:
   dashboard:
     orientation: columns
+  
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r setup}
 #| include: false
 library(tidyverse)
+df <- read.csv("Data Science for Everyday Music Listening_January 28, 2026_04.48.csv", skip = 2)
 ```
 
-# Page 1
+# Main Page
 
-## {.sidebar}
+##  {.sidebar}
 
-This is a sidebar for the first page. Many students like to add general text descriptions here.
+Everyday music listening often feels personal and self-directed. People
+build playlists that reflect their identity and rarely question where
+their musical preferences come from. Yet for many individuals, their
+earliest listening experiences occurred before they had any control over
+the music, for example while sitting in the backseat of a car as a
+parent chose what played. In this project, we address this gap by
+examining measurable audio features of music, including energy, valence,
+tempo, and danceability. Rather than comparing genres, we analyze
+parents’ and children’s favourite songs directly using these features.
+Our central research question is: *To what extent do the musical
+characteristics of parents’ favourite songs influence those of their
+children’ s favourite songs?*
 
-## Column 1 {width=60%}
+## Column 1 {width="40%"}
 
-```{r}
-#| title: Chart 1
-ggplot()
-```
+## Column 2 {width="60%"}
 
-## Column 2 {width=40%}
-
-### Row 1 
+### Row 1
 
 This is more text. Below it, you'll see another row with a tabset.
 
@@ -42,6 +53,42 @@ ggplot()
 ggplot()
 ```
 
-# Page 2
 
-## {.sidebar}
+# Methodology
+### Row {.columns}
+
+::: {.column width="33%"}
+
+```{r}
+#/ content: valuebox
+#/ title: "Total Participants"
+list(
+  icon = "people-fill",
+  color = "primary",
+  value = "58"
+)
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+#/ content: valuebox
+#/ title: "Valid Answers"
+list(
+  icon = "check-circle-fill",
+  color = "success",
+  value = "48"
+)
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+#/ content: valuebox
+#/ title: "Parent-Child Pairs"
+list(
+  icon = "house-check-fill",
+  color = "info",
+  value = "24"
+)
+```
