@@ -1,0 +1,145 @@
+pair_id;participant_id;role;song_rank;artist;track_title;Track URI;Danceability;Energy;Valence;Tempo;Acousticness;Loudness;Instrumentalness;Speechiness;Liveness;Key;Mode;Time Signature
+47KL;47KL_child;child;song_1;Radiohead;Jigsaw Falling Into Place;spotify:track:0YJ9FWWHn9EfnN0lHwbzvV;462.0;832.0;807.0;165.653;108.0;-6.085;0.00416;0.0479;0.0741;11.0;0.0;4.0
+47KL;47KL_parent;parent;song_1;Queen;Save Me - Remastered 2011;;507.0;452.0;322.0;81.632;359.0;-6.8;0.0;0.0269;109.0;7.0;1.0;3.0
+abc222;abc222_child;child;song_1;Lil Yachty, Diana Gordon;the BLACK seminole.;;286.0;0.55;109.0;136.285;0.0613;-5.794;0.27;0.0318;141.0;9.0;0.0;4.0
+abc222;abc222_parent;parent;song_1;Michael Jackson;Rock With You;spotify:track:5yxIenY5kSLlgTr3XGYw9p;793.0;741.0;856.0;114.489;0.0794;-6.494;0.00029;0.0393;116.0;1.0;1.0;4.0
+ADH677;ADH677_child;child;song_1;Zach Bryan;Heavy Eyes;spotify:track:2gJj6WtAxXjApMs3PXsCeX;471.0;912.0;613.0;139.667;32.0;-3.032;0.0;0.0724;343.0;5.0;1.0;4.0
+ADH677;ADH677_parent;parent;song_1;Pyotr Ilyich Tchaikovsky, Claudio Abbado, Chicago Symphony Orchestra;"Symphony No. 6 in B Minor, Op. 74, TH 30 ""Pathétique"": I. Adagio - Allegro non troppo";;158.0;0.0831;0.0488;141.03;913.0;-23.274;651.0;0.0461;145.0;11.0;1.0;4.0
+Adr312;Adr312_child;child;song_1;Ashtar Command;Mark IV with Joshua Radin (From Fifa13);;346.0;653.0;131.0;170.131;0.000789;-8.81;348.0;0.0328;256.0;7.0;1.0;4.0
+Adr312;Adr312_parent;parent;song_1;George Michael, Queen;Somebody to Love;;333;863;384;110.162;0.0518;-6.918;0;0.0515;972.0;7.0;1.0;1.0
+ams789;ams789_child;child;song_1;Slowdive;when the sun hits;spotify:track:0oxYB9GoOIDrdzniNdKC44;0.33;532.0;218.0;93.512;0.00101;-11.764;709.0;0.0263;101.0;2.0;1.0;4.0
+ams789;ams789_parent;parent;song_1;Nois Désir;Des visages des figures;;669;702;793;105.232;713;-10.616;0.0408;0.0582;119.0;4.0;0.0;4.0
+bojack123;bojack123_child;child;song_1;Kavinsky, The Weeknd;odd look;;627.0;897.0;257.0;104.947;246.0;-3.647;0.0;0.0504;117.0;10.0;0.0;4.0
+bojack123;bojack123_parent;parent;song_1;Meat Loaf;Paradise by the dashboard light;spotify:track:2g7gviEeJr6pyxO7G35EWQ;326.0;872.0;492.0;173.381;214.0;-7.602;0.0;122.0;461.0;2.0;1.0;4.0
+Bonte123;Bonte123_child;child;song_1;Led Zeppelin;Stairway to heaven - Remaster;;338.0;0.34;197.0;82.433;0.58;-12.049;0.0032;0.0339;116.0;9.0;0.0;4.0
+Bonte123;Bonte123_parent;parent;song_1;David bowie;Changes - 2015 Remaster;;559.0;308.0;414.0;113.633;505.0;-11.75;0.0;0.0376;109.0;0.0;1.0;4.0
+ds13;ds13_child;child;song_1;LNGSHOT;Moonwalkin';spotify:track:46V2ciN6F5bxjQWityNhkY;658.0;694.0;636.0;150.209;255.0;-5.635;0.0;0.0554;116.0;0.0;0.0;4.0
+ds13;ds13_parent;parent;song_1;SOOBIN;Tháng Năm;spotify:track:0SmQ0UWeiHKQtxUej4Rem6;0.67;618.0;251.0;147.015;128.0;-5.467;0.0;0.0377;0.0534;9.0;0.0;4.0
+ibiza90;ibiza90_child;child;song_1;Primer 55;Supa Freak Love;spotify:track:5w02nBF8o9RYWXba6026sd;506.0;922.0;266.0;186.378;6.44e-05;-4.66;0.00384;125.0;137.0;4.0;1.0;4.0
+ibiza90;ibiza90_parent;parent;song_1;Tool;Sober;spotify:track:6DyywdbmTzlmXBzG9ym7Rt;385.0;673.0;187.0;149.271;0.000183;-8.182;149.0;0.0329;0.0721;2.0;1.0;4.0
+khanh67;khanh67_child;child;song_1;Ariana Grande;Touch it;spotify:track:6WikCGNUbXFmXoLre7vjeW;536.0;694.0;291.0;100.906;0.0303;-4.369;0.0;0.0332;183.0;7.0;0.0;4.0
+khanh67;khanh67_parent;parent;song_1;ABBA;Happy new year;spotify:track:4AsvGVDWs16fqIiIdDzyvX;0.51;375.0;0.25;132.552;813.0;-9.185;0.0;0.0288;145.0;9.0;1.0;4.0
+khanh69;khanh69_child;child;song_1;Charlie Puth, Selena Gomez;We don’t talk anymore;spotify:track:5mSLRErB9D6gHo9C7Uh9Z6;728.0;562.0;359.0;100.019;622.0;-8.054;0.0;0.14;179.0;1.0;0.0;4.0
+khanh69;khanh69_parent;parent;song_1;ABBA;Happy new year;spotify:track:4AsvGVDWs16fqIiIdDzyvX;0.51;375.0;0.25;132.552;813.0;-9.185;0.0;0.0288;145.0;9.0;1.0;4.0
+ktc999;ktc999_child;child;song_1;Twoface;Fire in your eyes (Ay Ay);spotify:track:31Z7bPUGrjdNw9dGzqnaNX;613.0;799.0;748.0;132.02;0.0011;-5.055;1.2e-06;0.0252;0.0912;1.0;0.0;4.0
+ktc999;ktc999_parent;parent;song_1;David Bowie;"""Heroes"" - Live";;535.0;936.0;588.0;114.978;0.00374;-4.819;0.00949;0.0543;0.97;7.0;1.0;4.0
+lephamily;lephamily_child;child;song_1;Sabrina Carpenter;Sugar Talking;spotify:track:5B3GZOZYXNzWpUXQC42hxZ;482.0;777.0;396.0;151.967;0.0489;-4.812;0.0;0.0338;115.0;2.0;0.0;4.0
+lephamily;lephamily_parent;parent;song_1;Fiona Fung;Proud of you;spotify:track:3o6hdAe0kkygRgXxNzO1SR;749.0;341.0;507.0;81.965;926.0;-5.491;2.3e-05;0.0286;143.0;11.0;1.0;4.0
+ltc999;ltc999_child;child;song_1;Chief Keef;Faneto;spotify:track:6fL8iaSdwmSTQiUv9K6L4h;849.0;753.0;392.0;144.188;346.0;-7.399;0.0;357.0;0.0565;1.0;0.0;4.0
+ltc999;ltc999_parent;parent;song_1;David Bowie;"""Heroes"" - Live";;535.0;936.0;588.0;114.978;0.00374;-4.819;0.00949;0.0543;0.97;7.0;1.0;4.0
+Mooieollie;Mooieollie_child;child;song_1;one direction;Strong;spotify:track:3cKM7UXBZmgjEgEBTkaIlU;741.0;663.0;338.0;115.013;0.0608;-7.308;0.0;0.0434;0.0931;0.0;1.0;4.0
+Mooieollie;Mooieollie_parent;parent;song_1;stevie wonder;Sir Duke;spotify:track:4pNiE4LCVV74vfIBaUHm1b;588.0;568.0;952.0;106.938;0.16;-9.766;0.0;0.0672;0.0792;6.0;1.0;4.0
+Ngan123;Ngan123_child;child;song_1;Lil big stack;Skibidi toilet;spotify:track:73AiQc9SXjjeii7jbhQ6Vc;801.0;842.0;609.0;129.989;0.00234;-6.104;198.0;0.0491;0.0822;2.0;1.0;4.0
+Ngan123;Ngan123_parent;parent;song_1;BTS;Dynamite;spotify:track:5QDLhrAOJJdNAmCTJ8xMyW;746.0;765.0;737.0;114.044;0.0112;-4.41;0.0;0.0993;0.0936;6.0;0.0;4.0
+Nils567;Nils567_child;child;song_1;James;Out to get you;spotify:track:3w2ZohbKqqREEU2shH5u2u;285.0;0.0826;144.0;145.846;68.0;-19.301;0.000591;0.0343;107.0;5.0;1.0;4.0
+Nils567;Nils567_parent;parent;song_1;Radiohead;Karma police;spotify:track:63OQupATfueTdZMWTxW03A;0.36;501.0;324.0;74.807;0.0638;-9.129;9.32e-05;0.0258;172.0;7.0;1.0;4.0
+ptc999;ptc999_child;child;song_1;Mazzy Star;Take Everything;spotify:track:4f8igDpWLaLB8FyhitEdqy;399.0;264.0;109.0;134.282;244.0;-11.679;0.00708;0.0307;0.0994;9.0;1.0;4.0
+ptc999;ptc999_parent;parent;song_1;David Bowie;"""Heroes"" - Live";;535.0;936.0;588.0;114.978;0.00374;-4.819;0.00949;0.0543;0.97;7.0;1.0;4.0
+rtfswrr3544;rtfswrr3544_child;child;song_1;childish gambino;Feels like summer;spotify:track:7p4vHnYXkxlzvfePJVpcTr;0.55;596.0;253.0;165.736;162.0;-8.214;0.00481;134.0;0.0805;7.0;1.0;4.0
+rtfswrr3544;rtfswrr3544_parent;parent;song_1;Aretha Franklin;I Say a Little Prayer;;592.0;355.0;499.0;133.032;478.0;-14.051;0.0;0.0352;0.0585;9.0;1.0;4.0
+uitgeest1911;uitgeest1911_child;child;song_1;Dave, Tems;Raindance (feat. Tems);;796.0;741.0;249.0;107.0;236.0;-6.815;0.0619;0.0789;103.0;1.0;1.0;4.0
+uitgeest1911;uitgeest1911_parent;parent;song_1;Adele;Hello;spotify:track:1Yk0cQdMLx5RzzFTYwmuld;578.0;0.43;288.0;78.991;0.33;-6.134;0.0;0.0305;0.0854;5.0;0.0;4.0
+uva104;uva104_child;child;song_1;aespa;Whiplash;spotify:track:3coRPMnFg2dJcPu5RMloa9;863.0;0.9;748.0;126.023;0.0953;-2.974;0.0212;0.0448;0.0786;10.0;0.0;4.0
+uva104;uva104_parent;parent;song_1;lệ quyên;chuyến tàu hoàng hôn;spotify:track:5alFlxMY4MzUxeruKQDJOa;269.0;388.0;0.28;172.425;811.0;-9.836;0.0;41.0;106.0;9.0;0.0;4.0
+vds975;vds975_child;child;song_1;WHERE IS MY HUSBAND!;RAYE;;0.39;781;628;115.939;0.0599;-7.04;0;0.0918;0.14;8.0;1.0;4.0
+vds975;vds975_parent;parent;song_1;Tracy Chapman;Fast Car;spotify:track:2M9ro2krNb7nr7HSprkEgo;711.0;292.0;194.0;103.951;313.0;-15.523;0.0;37.0;131.0;4.0;0.0;4.0
+vy128;vy128_child;child;song_1;Fleetwood Mac;World Turning;spotify:track:6QvgyZ8xG2OFGjZsH3s8d3;676.0;379.0;818.0;115.237;174.0;-19.42;0.0072;31.0;0.0619;2.0;1.0;4.0
+vy128;vy128_parent;parent;song_1;Boney M.;Daddy Cool;;763.0;777.0;929.0;124.431;281.0;-6.932;0.79;0.0364;134.0;5.0;0.0;4.0
+xyz579;xyz579_child;child;song_1;Bring Me The Horizon;Can You Feel My Heart;spotify:track:0WSa1sucoNRcEeULlZVQXj;0.15;859.0;354.0;170.527;0.00201;-2.827;194.0;0.0595;387.0;4.0;0.0;5.0
+xyz579;xyz579_parent;parent;song_1;Pyotr Ilych Tchaikovsky;"Symphony No.6 in B Minor, Op. 74, TH 30 ""Pathetique"" : I. Adagio";;158;0.0831;0.0488;141.03;913;-23.274;651;0.0461;145.0;11.0;1.0;4.0
+47KL;47KL_child;child;song_2;Masayoshi Takanaka;Ready to Fly;spotify:track:6974s3EIddg6dK8U7ycAMR;433.0;776.0;732.0;135.826;0.0299;-10.983;495.0;0.0863;0.19;9.0;1.0;4.0
+47KL;47KL_parent;parent;song_2;Nat King Cole;Wolverton Mountain;spotify:track:1iDTY4GcmngjCLpu9MxlN5;554.0;564.0;0.75;158.146;696.0;-10.901;0.0;0.0609;283.0;10.0;1.0;4.0
+abc222;abc222_child;child;song_2;Mid-Air Thief;These Chains;spotify:track:4eFkPKdkAbyLjHneGQQNPe;349.0;776.0;157.0;127.885;582.0;-8.081;116.0;137.0;422.0;11.0;1.0;4.0
+abc222;abc222_parent;parent;song_2;Redbone;Come and Get Your Love - Single Version;;731.0;804.0;957.0;107.383;172.0;-7.621;0.00028;0.0473;0.0685;11.0;0.0;4.0
+ADH677;ADH677_child;child;song_2;EST Gee;Have mercy;spotify:track:1hssS4fYPc9EGQsppj2DaQ;602.0;698.0;278.0;155.099;0.0971;-6.265;0.0;208.0;147.0;11.0;1.0;4.0
+ADH677;ADH677_parent;parent;song_2;Miles Davis;All Blues;spotify:track:0tYgqYrAgGTyi5GhYKsIkP;498.0;201.0;366.0;139.299;779.0;-16.266;0.00454;31.0;0.0718;0.0;1.0;3.0
+Adr312;Adr312_child;child;song_2;Frank Sinatra, Julio Iglesias;Summer Wind;;485.0;384.0;454.0;99.325;344.0;-11.183;0.0;0.0314;0.0814;8.0;1.0;4.0
+Adr312;Adr312_parent;parent;song_2;Queen;Bohemian Rhapsody;spotify:track:3z8h0TU7ReDPLIbEnYhWZb;0.39;395.0;247.0;144.32;288.0;-9.966;0.0;0.0501;207.0;0.0;0.0;4.0
+ams789;ams789_child;child;song_2;Radiohead;reckoner;spotify:track:02ppMPbg1OtEdHgoPqoqju;523.0;656.0;214.0;104.271;511.0;-7.441;0.16;0.0262;0.0679;4.0;0.0;4.0
+ams789;ams789_parent;parent;song_2;Michael Bublé;sway;;713.0;639.0;737.0;125.959;753.0;-5.529;0.0;0.0313;0.0878;2.0;0.0;4.0
+bojack123;bojack123_child;child;song_2;a$ap rocky;punk rocky;spotify:track:5FSvy2wYKnurBi0Nq3wR9F;637.0;845.0;642.0;140.043;0.0102;-4.13;0.0276;0.0304;148.0;0.0;1.0;4.0
+bojack123;bojack123_parent;parent;song_2;Lady Gaga, Bruno Mars;Die With A Smile;;521.0;592.0;535.0;157.969;308.0;-7.777;0.0;0.0304;122.0;6.0;0.0;3.0
+Bonte123;Bonte123_child;child;song_2;Guns n' roses;November rain;spotify:track:3YRCqOhFifThpSRFJ1VWFM;294.0;0.64;226.0;79.79;16.0;-9.316;0.22;0.0291;112.0;11.0;1.0;4.0
+Bonte123;Bonte123_parent;parent;song_2;slayer;South of heaven;spotify:track:3U9gogDStAfWxSm91PJuxb;0.31;991.0;0.0395;140.071;0.000132;-3.769;85.0;316.0;0.0969;5.0;0.0;4.0
+ds13;ds13_child;child;song_2;Gregg Karukas;Girl in the Red Dress;spotify:track:7IGXCoBk68O6Yrt65WFPIL;756.0;531.0;838.0;119.991;318.0;-11.627;713.0;0.0403;0.0929;5.0;0.0;4.0
+ds13;ds13_parent;parent;song_2;Bằng Kiều, Binz, Bùi Công Nam, Duy Khánh 周周, Thanh Duy, Thien Minh;Dẫu Có Lỗi Lầm;;407.0;401.0;202.0;128.1;0.27;-11.806;0.0;51.0;105.0;7.0;1.0;4.0
+ibiza90;ibiza90_child;child;song_2;Radiohead;Black Star;spotify:track:6UO72VSXEONxdfLyABihs9;289.0;555.0;306.0;158.671;0.00312;-7.434;0.0496;0.0402;0.27;7.0;1.0;4.0
+ibiza90;ibiza90_parent;parent;song_2;Iron Maiden;Fear of the Dark - Live '01;;0.2;962.0;144.0;123.028;0.00453;-5.968;0.0413;177.0;969.0;2.0;0.0;4.0
+khanh67;khanh67_child;child;song_2;Rihanna;Where have you been;spotify:track:5WQQIDU3HRaMyPkob8mpFb;719.0;847.0;443.0;127.96;0.00201;-6.34;0.0204;0.0919;221.0;0.0;0.0;4.0
+khanh67;khanh67_parent;parent;song_2;Shakira;Waka Waka (This Time for Africa) - K-Mix;;0.71;871.0;829.0;126.957;0.0116;-5.037;3E-06;0.0503;108.0;9.0;1.0;4.0
+khanh69;khanh69_child;child;song_2;Justin Bieber, Nicki Minaj;Beauty And A Beat;;602.0;843.0;526.0;128.003;0.000688;-4.831;5.27e-05;0.0593;0.0682;0.0;1.0;4.0
+khanh69;khanh69_parent;parent;song_2;Shakira;Waka Waka (This Time for Africa) - K-Mix;;0.71;871.0;829.0;126.957;0.0116;-5.037;3E-06;0.0503;108.0;9.0;1.0;4.0
+ktc999;ktc999_child;child;song_2;Spandau Ballet;Gold;spotify:track:2X9fsxb6O6bYEopJYmUbNC;711.0;0.74;639.0;143.053;258.0;-7.776;0.0111;0.0361;104.0;10.0;0.0;4.0
+ktc999;ktc999_parent;parent;song_2;Pearl Jam;Come Back;spotify:track:0sHdUji2tWxiRDfShSWHUN;296.0;563.0;267.0;167.412;0.0936;-5.58;5.93e-05;29.0;116.0;5.0;1.0;3.0
+lephamily;lephamily_child;child;song_2;Sabrina Carpenter;Goodbye;spotify:track:4tVVmShMF2PYdLqcejrsy2;567.0;616.0;523.0;120.121;185.0;-5.871;0.0;0.0483;101.0;9.0;1.0;4.0
+lephamily;lephamily_parent;parent;song_2;Marcia Ferreira;Chorando Se Foi;;799.0;718.0;973.0;114.974;445.0;-9.064;0.00115;0.0283;118.0;2.0;0.0;4.0
+ltc999;ltc999_child;child;song_2;Modern Talking;Wild wild water;spotify:track:4Fp443SLWjGl6qntbeYife;661.0;442.0;584.0;96.358;399.0;-15.525;0.0209;0.0292;135.0;6.0;0.0;4.0
+ltc999;ltc999_parent;parent;song_2;Pearl Jam;Come Back;spotify:track:0sHdUji2tWxiRDfShSWHUN;296.0;563.0;267.0;167.412;0.0936;-5.58;5.93e-05;29.0;116.0;5.0;1.0;3.0
+Mooieollie;Mooieollie_child;child;song_2;Shawn Mendes;Perfectly wrong;spotify:track:6nat4Z7iRKWVk1qngQqI0Q;361.0;311.0;323.0;89.362;873.0;-11.748;0.0;0.0369;0.0987;2.0;0.0;4.0
+Mooieollie;Mooieollie_parent;parent;song_2;Kensington;Uncharted;spotify:track:1OJcaSbK9DBaxHExACplwA;594.0;527.0;226.0;138.956;0.14;-6.805;0.0;0.0308;294.0;10.0;1.0;4.0
+Ngan123;Ngan123_child;child;song_2;BTS;Dynamite;spotify:track:5QDLhrAOJJdNAmCTJ8xMyW;746.0;765.0;737.0;114.044;0.0112;-4.41;0.0;0.0993;0.0936;6.0;0.0;4.0
+Ngan123;Ngan123_parent;parent;song_2;Yuko;"Golden (""K-POP Demon Hunters"")";;725.0;658.0;108.0;122.7;248.0;-5.362;1.63e-05;0.0779;513.0;7.0;1.0;4.0
+Nils567;Nils567_child;child;song_2;Jeff Buckley;Lover, you should’ve come over;;387;595;151;119.38;361;-5.67;0.000011;0.0389;174.0;2.0;1.0;3.0
+Nils567;Nils567_parent;parent;song_2;james;Get away with it;;285;0.0826;144;145.846;68;-19.301;0.000591;0.0343;107.0;5.0;1.0;4.0
+ptc999;ptc999_child;child;song_2;Marilyn Manson;The Dope Show;spotify:track:1KQxH1Z1BiSo3MMukVpRfl;562.0;671.0;376.0;134.962;8.73e-06;-7.801;0.000491;0.0379;792.0;4.0;0.0;4.0
+ptc999;ptc999_parent;parent;song_2;Pearl Jam;Come Back;spotify:track:0sHdUji2tWxiRDfShSWHUN;296.0;563.0;267.0;167.412;0.0936;-5.58;5.93e-05;29.0;116.0;5.0;1.0;3.0
+rtfswrr3544;rtfswrr3544_child;child;song_2;Trio Mocoto;Não adianta;spotify:track:7rud54XCjLv3AQbaUAtxU1;484.0;0.81;422.0;144.454;626.0;-4.579;0.000283;0.0377;0.11;7.0;0.0;4.0
+rtfswrr3544;rtfswrr3544_parent;parent;song_2;Stan Getz, João Gilberto, Antônio Carlos Jobim;The Girl From Ipanema;;656.0;191.0;373.0;129.849;908.0;-16.905;0.00084;0.0414;117.0;5.0;0.0;4.0
+uitgeest1911;uitgeest1911_child;child;song_2;Nemzzz;STAR SIGN;;859.0;584.0;0.39;150.019;0.0317;-9.051;0.0;324.0;0.3;1.0;0.0;4.0
+uitgeest1911;uitgeest1911_parent;parent;song_2;The Verve;Bitter Sweet Symphony;spotify:track:1WYEDcS7WGjv0rG7rmMX3o;356.0;913.0;537.0;171.157;0.0339;-6.015;0.0;0.0499;221.0;9.0;1.0;4.0
+uva104;uva104_child;child;song_2;VSTRA, Tyronee;Ai Ngoài Anh;;783.0;675.0;616.0;100.014;562.0;-6.748;0.0;0.0288;287.0;5.0;0.0;4.0
+uva104;uva104_parent;parent;song_2;Lệ Quyên, Lam Phương;Thành Phố Buồn;;411.0;443.0;394.0;177.034;802.0;-6.06;4.79e-06;0.0398;361.0;11.0;0.0;3.0
+vds975;vds975_child;child;song_2;Everybody Wants To Rule The World;Tears For Fears;;645;795;535;112.067;347;-12.095;0.00389;0.0527;104.0;7.0;1.0;4.0
+vds975;vds975_parent;parent;song_2;Racoon;Oceaan;;0.51;313.0;211.0;96.467;0.87;-8.961;0.0;0.0406;108.0;9.0;1.0;4.0
+vy128;vy128_child;child;song_2;The Notations;What More Can I Say;spotify:track:1PHPODXYdkxmU9nkrqLd8y;477.0;391.0;673.0;134.949;275.0;-10.015;0.000127;0.0262;158.0;5.0;1.0;4.0
+vy128;vy128_parent;parent;song_2;ABBA;Happy New Year;spotify:track:4AsvGVDWs16fqIiIdDzyvX;0.51;375.0;0.25;132.552;813.0;-9.185;0.0;0.0288;145.0;9.0;1.0;4.0
+xyz579;xyz579_child;child;song_2;La Dispute;Such Small Hands;spotify:track:31Hx0pInhn2tSq5gdhWv0d;631.0;728.0;295.0;80.003;226.0;-5.185;0.00118;0.0748;0.0682;9.0;0.0;4.0
+xyz579;xyz579_parent;parent;song_2;Miles Davis;All Blues;spotify:track:0tYgqYrAgGTyi5GhYKsIkP;498.0;201.0;366.0;139.299;779.0;-16.266;0.00454;31.0;0.0718;0.0;1.0;3.0
+47KL;47KL_child;child;song_3;Deftones;Digital Bath;spotify:track:2jSJm3Gv6GLxduWLenmjKS;338.0;859.0;504.0;92.966;0.00122;-4.938;211.0;0.0824;0.0936;4.0;0.0;4.0
+47KL;47KL_parent;parent;song_3;Meat Loaf;Paradise by the Dashboard Light;spotify:track:2g7gviEeJr6pyxO7G35EWQ;326.0;872.0;492.0;173.381;214.0;-7.602;0.0;122.0;461.0;2.0;1.0;4.0
+abc222;abc222_child;child;song_3;Manchester Orchestra;Play It Again, Sam! You Don't Have Any Feathers;;741.0;149.0;344.0;94.987;964.0;-15.834;0.00135;0.0331;157.0;9.0;1.0;4.0
+abc222;abc222_parent;parent;song_3;Queen;Don't Stop Me Now;;465;917;403;155.02;0.0152;-6.335;0.0187;237.0;286.0;5.0;1.0;4.0
+ADH677;ADH677_child;child;song_3;Dj Mad Dog;Verzerrung;;525.0;992.0;126.0;155.025;9.92e-05;-3.692;651.0;0.31;0.0576;1.0;1.0;4.0
+ADH677;ADH677_parent;parent;song_3;La Dispute;Andria;spotify:track:4CvejJIsZNEzxrTGm6FoX9;334.0;0.86;301.0;187.334;0.0458;-3.974;0.0;221.0;236.0;9.0;0.0;5.0
+Adr312;Adr312_child;child;song_3;The Stranglers;Golden Brown;spotify:track:2AX5E86cn9n2dgioZEjirI;562.0;383.0;599.0;93.764;143.0;-15.474;124.0;0.0304;138.0;6.0;1.0;3.0
+Adr312;Adr312_parent;parent;song_3;Spandau Ballet;Gold;spotify:track:2X9fsxb6O6bYEopJYmUbNC;711.0;0.74;639.0;143.053;258.0;-7.776;0.0111;0.0361;104.0;10.0;0.0;4.0
+ams789;ams789_child;child;song_3;Deftones;sextape;spotify:track:1EryAkZ0VHstC6haIxVBiE;367.0;634.0;0.0964;89.981;0.000824;-6.475;0.0759;27.0;116.0;5.0;1.0;4.0
+ams789;ams789_parent;parent;song_3;Metallica;Nothing Else Matters - Live;;273.0;609.0;0.0997;144.808;0.000586;-7.856;123.0;0.0348;966.0;3.0;0.0;3.0
+bojack123;bojack123_child;child;song_3;Miguel, J. Cole;All I Want Is You (feat. J. Cole);;776.0;603.0;921.0;96.888;0.0728;-5.696;6.25e-05;0.0343;111.0;5.0;1.0;4.0
+bojack123;bojack123_parent;parent;song_3;TOTO;I will remember;spotify:track:1MzFmVDSl7Vm00f3Hw4Xfx;653.0;506.0;447.0;98.391;146.0;-8.755;9.43e-05;0.0267;0.0845;10.0;1.0;4.0
+Bonte123;Bonte123_child;child;song_3;Red Hot Chili Peppers;Under the Bridge;;559.0;345.0;458.0;84.581;0.0576;-13.496;0.000105;0.0459;141.0;4.0;1.0;4.0
+Bonte123;Bonte123_parent;parent;song_3;Wilco;Jesus, Etc.;;756.0;0.28;695.0;109.413;616.0;-14.27;0.00033;0.0296;414.0;5.0;1.0;4.0
+ds13;ds13_child;child;song_3;KATSEYE;Gabriela;spotify:track:1xOqGUkyxGQRdCvGpvWKmL;653.0;754.0;623.0;145.884;184.0;-4.579;0.0;0.0692;369.0;7.0;1.0;4.0
+ds13;ds13_parent;parent;song_3;VCT;Mơ;;556.0;413.0;191.0;113.086;908.0;-7.261;3.38e-06;0.0791;0.0924;9.0;1.0;4.0
+ibiza90;ibiza90_child;child;song_3;Beach House;Wishes;spotify:track:2WwQVXzsO3AuJGCc7Da5hO;309.0;782.0;0.21;74.738;164.0;-7.301;0.07;0.0323;247.0;7.0;1.0;4.0
+ibiza90;ibiza90_parent;parent;song_3;Muse;Plug in baby;spotify:track:2UKARCqDrhkYDoVR4FN5Wi;408.0;965.0;349.0;136.018;6.94e-06;-4.232;0.000402;0.05;0.11;2.0;1.0;4.0
+khanh67;khanh67_child;child;song_3;Martin Garrix, Troye Sivan;There for you;spotify:track:6jA8HL9i4QGzsj6fjoxp8Y;611.0;644.0;0.13;105.969;124.0;-7.607;0.0;0.0553;124.0;6.0;0.0;4.0
+khanh67;khanh67_parent;parent;song_3;Lệ Quyên;Giấc mơ có thật;spotify:track:3LdMzfxD7H3lOucIEk7nac;643.0;458.0;352.0;126.07;0.51;-7.6;0.0;0.0304;0.0663;9.0;1.0;4.0
+khanh69;khanh69_child;child;song_3;The Weeknd;Dancing In The Flames;;552.0;0.73;162.0;116.875;0.0011;-6.203;0.0;0.0381;0.0837;1.0;1.0;4.0
+khanh69;khanh69_parent;parent;song_3;Lệ Quyên;Giấc mơ có thật;spotify:track:3LdMzfxD7H3lOucIEk7nac;643.0;458.0;352.0;126.07;0.51;-7.6;0.0;0.0304;0.0663;9.0;1.0;4.0
+ktc999;ktc999_child;child;song_3;iLoveMemphis;Hit the Quan - Original Version;;741.0;488.0;625.0;160.018;0.000235;-8.253;0.0;362.0;0.0488;8.0;1.0;4.0
+ktc999;ktc999_parent;parent;song_3;Generation X;Untouchables;spotify:track:0CsDroawScjiSQydIfm3KX;641.0;554.0;733.0;133.325;7.32e-05;-10.356;0.0881;0.0287;109.0;7.0;1.0;4.0
+lephamily;lephamily_child;child;song_3;Taylor Swift;Chloe or Sam or Sophia or Marcus;spotify:track:1rmEsOezwf2lmIZTMAO5Ag;516.0;451.0;218.0;70.266;0.78;-8.552;0.0;0.0446;105.0;0.0;1.0;4.0
+lephamily;lephamily_parent;parent;song_3;Michael Jackson;Heal the World;spotify:track:7woW97CfcWaKtuC6W5BP2K;545.0;485.0;101.0;80.948;537.0;-8.045;1.8e-06;0.0485;104.0;9.0;1.0;4.0
+ltc999;ltc999_child;child;song_3;Lana Del Rey, A$AP Rocky;Groupie Love (Feat. A$AP Rocky);spotify:track:03hqMhmCZiNKMSPmVabPLP;359.0;0.6;195.0;175.894;113.0;-7.317;1.32e-06;0.0398;0.0952;9.0;1.0;4.0
+ltc999;ltc999_parent;parent;song_3;Generation X;Untouchables;spotify:track:0CsDroawScjiSQydIfm3KX;641.0;554.0;733.0;133.325;7.32e-05;-10.356;0.0881;0.0287;109.0;7.0;1.0;4.0
+Mooieollie;Mooieollie_child;child;song_3;Fleetwood mac;Landslide;spotify:track:5ihS6UUlyQAfmp48eSkxuQ;414.0;161.0;423.0;159.375;883.0;-22.32;0.000223;0.0318;117.0;7.0;0.0;4.0
+Mooieollie;Mooieollie_parent;parent;song_3;Triggerfinger;I follow rivers;spotify:track:38QT6vz5ZnWPSc10rFduZ0;844.0;465.0;683.0;110.024;0.0244;-9.7;0.0;0.0481;0.0162;7.0;0.0;4.0
+Ngan123;Ngan123_child;child;song_3;Yuko;"Golden (""K-POP Demon Hunters"")";;725.0;658.0;108.0;122.7;248.0;-5.362;1.63e-05;0.0779;513.0;7.0;1.0;4.0
+Ngan123;Ngan123_parent;parent;song_3;Lương Gia Hùng.;Lương Gia Hùng.;;614;535;561;106.095;0.55;-7.027;0;0.0242;0.0965;10.0;0.0;4.0
+Nils567;Nils567_child;child;song_3;Radiohead;True love waits;spotify:track:07XaOyTS5hyaWiUK1Bc3bR;401.0;132.0;0.0381;136.142;938.0;-15.569;102.0;0.0355;0.1;0.0;1.0;4.0
+Nils567;Nils567_parent;parent;song_3;Chico Buarque;Fado tropical;spotify:track:0yHQDYRvmjjnQ9NIy38xlZ;491.0;472.0;543.0;135.27;536.0;-8.19;0.0;0.0381;337.0;2.0;1.0;4.0
+ptc999;ptc999_child;child;song_3;Ecco2k, Bladee;Amygdala;spotify:track:4lUc0XBymgLCx3fs6ovzRj;713.0;0.59;745.0;120.955;0.0508;-4.015;1.67e-05;0.0535;114.0;7.0;1.0;4.0
+ptc999;ptc999_parent;parent;song_3;Generation X;Untouchables;spotify:track:0CsDroawScjiSQydIfm3KX;641.0;554.0;733.0;133.325;7.32e-05;-10.356;0.0881;0.0287;109.0;7.0;1.0;4.0
+rtfswrr3544;rtfswrr3544_child;child;song_3;Sade;Cherish the day;spotify:track:22QiTJqDn1BIRSh4mkNJ5w;0.68;389.0;0.68;80.145;0.0121;-13.239;0.0834;0.0545;105.0;8.0;1.0;4.0
+rtfswrr3544;rtfswrr3544_parent;parent;song_3;Amii Stewart;Friends;spotify:track:4C7BbL32gZDORkVs19bDdx;539.0;276.0;505.0;89.483;838.0;-12.268;0.0;0.0393;164.0;9.0;1.0;4.0
+uitgeest1911;uitgeest1911_child;child;song_3;Esdeekid;Century;spotify:track:1lJOLxDS8kS2rihrqezMcv;389.0;871.0;141.0;104.846;0.23;-6.885;0.0;0.0647;167.0;6.0;1.0;3.0
+uitgeest1911;uitgeest1911_parent;parent;song_3;Claudia de Breij;Mag ik dan bij jou;spotify:track:6JlJtgJIlMhp8sQ1tKBfdv;541.0;291.0;188.0;133.444;968.0;-9.478;0.0085;0.0344;708.0;0.0;1.0;4.0
+uva104;uva104_child;child;song_3;Laufey;Lover Girl;spotify:track:6dWilYAxP2aJbTTt0UsatK;658.0;447.0;899.0;87.907;836.0;-7.225;0.0;155.0;0.0752;11.0;1.0;4.0
+uva104;uva104_parent;parent;song_3;Giao Linh, Quê Nương;Hoa Nở Về Đêm;;489.0;498.0;385.0;84.288;537.0;-7.28;0.0;0.0298;393.0;5.0;0.0;4.0
+vds975;vds975_child;child;song_3;Plage;Crystal Fighters;;689;828;263;134.03;105;-6.41;0.0207;0.0413;154.0;4.0;1.0;4.0
+vds975;vds975_parent;parent;song_3;Ed Sheeran;Thinking out Loud;spotify:track:34gCuhDGsG4bRPIf9bb02f;781.0;445.0;591.0;78.998;474.0;-6.061;0.0;0.0295;184.0;2.0;1.0;4.0
+vy128;vy128_child;child;song_3;Thee Sacred Souls;Will I See You Again?;spotify:track:4R5GN0mBvb6jkRj3Zvyhkl;515.0;451.0;661.0;169.931;405.0;-8.047;1.12e-06;0.0309;111.0;9.0;0.0;4.0
+vy128;vy128_parent;parent;song_3;Như Quỳnh;Người Tình Mùa Đông;spotify:track:5YiHvRxIzQ4hJgtwAXyW3B;788.0;491.0;664.0;133.831;363.0;-10.65;1.04e-05;0.0295;182.0;9.0;0.0;4.0
+xyz579;xyz579_child;child;song_3;Viagra Boys, Amy Taylor;In Spite of Ourselves;;517.0;732.0;452.0;140.475;0.00138;-7.988;117.0;0.0371;555.0;4.0;0.0;4.0
+xyz579;xyz579_parent;parent;song_3;La Dispute;Andria;spotify:track:4CvejJIsZNEzxrTGm6FoX9;334.0;0.86;301.0;187.334;0.0458;-3.974;0.0;221.0;236.0;9.0;0.0;5.0

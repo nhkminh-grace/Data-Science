@@ -3,7 +3,9 @@ title: \small Intergenerational Similarity in Musical Preferences
 author: Mysterious Group
 format:
   dashboard:
+    theme: journal
     orientation: columns
+    css: style.css
   
 editor: 
   markdown: 
@@ -12,83 +14,227 @@ editor:
 
 ```{r setup}
 #| include: false
-library(tidyverse)
-df <- read.csv("Data Science for Everyday Music Listening_January 28, 2026_04.48.csv", skip = 2)
+library(readr)
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(tidyr)
+
+df <- read_delim(
+  "combined_table_with_audio_features_filled.csv",
+  delim = ";"
+)
+
+df2 <- read.csv("Data Science for Everyday Music Listening_January 28, 2026_04.48.csv")
+
+
+features <- c(
+  "Danceability",
+  "Energy",
+  "Valence",
+  "Tempo",
+  "Acousticness"
+)
+
+avg <- df %>%
+  group_by(pair_id, role) %>%
+  summarise(
+    across(all_of(features), mean, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+pivot <- avg %>%
+  pivot_wider(
+    names_from = role,
+    values_from = all_of(features)
+  ) %>%
+  drop_na()
+
+plot_df <- pivot %>%
+  mutate(
+    parent_tempo = Tempo_parent,
+    child_tempo  = Tempo_child,
+
+    distance = sqrt(
+      (Danceability_child - Danceability_parent)^2 +
+      (Energy_child        - Energy_parent)^2 +
+      (Valence_child       - Valence_parent)^2 +
+      (Tempo_child         - Tempo_parent)^2 +
+      (Acousticness_child  - Acousticness_parent)^2
+    )
+  ) %>%
+  select(pair_id, parent_tempo, child_tempo, distance)
+
+library(plotly)
+
+plot1 <- ggplotly(
+  ggplot(plot_df, aes(
+    x = parent_tempo,
+    y = child_tempo,
+    size = distance,
+    color = distance,
+    text = pair_id
+  )) +
+    geom_point(alpha = 0.7) +
+    scale_color_viridis_c() +
+    labs(
+      title = "Parent–Child Tempo Correlation with Musical Distance",
+      x = "Parent Tempo",
+      y = "Child Tempo"
+    )
+)
+
+# Extract role (student / parent)
+df2 <- df2 %>%
+  mutate(
+    role = str_extract(as.character(Q21), "(student|parent)")
+  )
+
+# ===== 2. GET FREQUENCY DATA (value_counts equivalent) =====
+# Children: Q13, Parents: Q28 [web:11][web:16][web:19]
+child_freq <- df2 %>%
+  filter(role == "student", !is.na(Q13)) %>%
+  count(Q13, name = "n_child")
+
+parent_freq <- df2 %>%
+  filter(role == "parent", !is.na(Q28)) %>%
+  count(Q28, name = "n_parent")
+
+# Category order
+category_order <- c(
+  "Less than 5 hours.",
+  "5-10 hours.",
+  "10-20 hours.",
+  "More than 20 hours."
+)
+
+# Ensure all categories present, fill missing with 0
+child_freq <- child_freq %>%
+  complete(Q13 = category_order, fill = list(n_child = 0))
+
+parent_freq <- parent_freq %>%
+  complete(Q28 = category_order, fill = list(n_parent = 0))
+
+# Merge into long format for ggplot
+freq_long <- child_freq %>%
+  rename(category = Q13) %>%
+  full_join(parent_freq %>% rename(category = Q28),
+            by = "category") %>%
+  replace_na(list(n_child = 0, n_parent = 0)) %>%
+  mutate(
+    category_clean = str_replace_all(category, "\\.", "") %>% str_trim()
+  ) %>%
+  pivot_longer(
+    cols = c(n_child, n_parent),
+    names_to = "group",
+    values_to = "count"
+  ) %>%
+  mutate(
+    group = ifelse(group == "n_child", "Children", "Parents"),
+    category_clean = factor(category_clean,
+                            levels = str_replace_all(category_order, "\\.", "") %>% str_trim())
+  )
+
+# ===== 3. CREATE SIDE-BY-SIDE BAR CHART =====
+plot2 <- ggplot(freq_long,
+       aes(x = category_clean, y = count, fill = group)) +
+  geom_bar(stat = "identity",
+           position = position_dodge(width = 0.8),
+           colour = "black",
+           width = 0.7,
+           alpha = 0.85) +                              # side-by-side bars [web:12][web:15][web:18]
+  geom_text(aes(label = ifelse(count > 0, count, "")),
+            position = position_dodge(width = 0.8),
+            vjust = -0.25,
+            fontface = "bold",
+            size = 3.5) +
+  scale_fill_manual(values = c("Children" = "#45B7D1",
+                               "Parents"  = "#FFA07A")) +
+  labs(
+    x = "Music Listening Hours per Week",
+    y = "Frequency (Number of Respondents)",
+    fill = NULL
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold", margin = margin(b = 15)),
+    axis.title = element_text(size = 13, face = "bold"),
+    axis.text.x = element_text(size = 11),
+    legend.text = element_text(size = 12)
+  )
+
+
 ```
 
 # Main Page
 
 ##  {.sidebar}
-
-Everyday music listening often feels personal and self-directed. People
-build playlists that reflect their identity and rarely question where
-their musical preferences come from. Yet for many individuals, their
-earliest listening experiences occurred before they had any control over
-the music, for example while sitting in the backseat of a car as a
-parent chose what played. In this project, we address this gap by
-examining measurable audio features of music, including energy, valence,
-tempo, and danceability. Rather than comparing genres, we analyze
-parents’ and children’s favourite songs directly using these features.
 Our central research question is: *To what extent do the musical
 characteristics of parents’ favourite songs influence those of their
 children’ s favourite songs?*
 
-## Column 1 {width="40%"}
+Everyday music listening often feels personal and self-directed. People build playlists
+that reflect their identity and rarely question where their musical preferences come from. Yet for many individuals, their earliest listening experiences occurred before they had any control over the music, for example while sitting in the backseat of a car as a parent chose what played.
 
-## Column 2 {width="60%"}
+Research suggests that these early listening environments may matter. Studies on
+intergenerational continuity of music taste show that parents’ influence on children’s musical preferences becomes clear in genre preferences (Ter Bogt et al., 2011). Other work has established the link between parent-child relations to children’s later musical involvement and listening habits (Kreutz & Feldhaus, 2023). Together, this research indicates that musical taste develops within social and familial contexts.
+
+However, much of the existing literature focuses on genre labels or self-reported
+similarity, which capture how people describe their taste rather than how the music itself sounds. This leaves open the question of whether intergenerational similarity can also be observed at the level of acoustic characteristics such as energy, tempo, or emotional tone.
+
+In this project, we address this gap by examining measurable audio features of music,
+including energy, valence, tempo, and danceability. Rather than comparing genres, we analyze
+parents’ and children’s favourite songs directly using these features.
+
+## Column 1 {width="70%"}
 
 ### Row 1
 
-This is more text. Below it, you'll see another row with a tabset.
+Graph Explanation
 
 ### Row 2 {.tabset}
 
 ```{r}
-#| title: Chart 2
-ggplot()
+#| title: Tempo Correlation and Musical Distance
+plot1
 ```
 
 ```{r}
-#| title: Chart 3
-ggplot()
+#| title: Weekly Music Listening Frequency
+plot2
 ```
 
+## Column 2 {width = "30%"}
 
+### <font color="#000000">Final Playlist</font>
+
+
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5Fzpjl4MhZyiSvy6JSeAW4?utm_source=generator" width="100%" height="650" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 # Methodology
-### Row {.columns}
 
-::: {.column width="33%"}
+## Column {width="25%"}
 
-```{r}
-#/ content: valuebox
-#/ title: "Total Participants"
-list(
-  icon = "people-fill",
-  color = "primary",
-  value = "58"
-)
-```
+::: {.valuebox icon="people-fill" color="primary"}
+**Total Participants**  
+58
 :::
 
-::: {.column width="33%"}
-```{r}
-#/ content: valuebox
-#/ title: "Valid Answers"
-list(
-  icon = "check-circle-fill",
-  color = "success",
-  value = "48"
-)
-```
+::: {.valuebox icon="check-circle-fill" color="success"}
+**Valid Answers**  
+48
 :::
 
-::: {.column width="33%"}
-```{r}
-#/ content: valuebox
-#/ title: "Parent-Child Pairs"
-list(
-  icon = "house-check-fill",
-  color = "info",
-  value = "24"
-)
-```
+::: {.valuebox icon="house-check-fill" color="info"}
+**Parent–Child Pairs**  
+24
+:::
+
+::: {.valuebox icon="calculator" color="secondary"}
+**Average Gold-MSI Score**  
+78.6
+:::
+
+## Column {width="50%"}
+
+# Results
+
