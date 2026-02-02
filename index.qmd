@@ -165,7 +165,6 @@ plot2 <- ggplot(freq_long,
 
 
 ```
-
 # Main Page
 
 ##  {.sidebar}
