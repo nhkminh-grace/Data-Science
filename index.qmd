@@ -25,6 +25,10 @@ library(tibble)
 library(plotly)
 library(knitr)
 library(kableExtra)
+library(cowplot)
+library(grid)
+library(gridExtra)
+
 
 df <- read_delim(
   "combined_table_with_audio_features_filled.csv",
@@ -352,6 +356,10 @@ violin_long <- avg |>
     values_to = "value"
   )
 
+violin_long <- violin_long |>
+  mutate(role = factor(role, levels = c("parent", "child")))  # Or "student"
+
+
 # Violin plots: parents vs children for each feature
 violin_features <- ggplot(violin_long,
                           aes(x = role, y = value, fill = role)) +
@@ -360,9 +368,10 @@ violin_features <- ggplot(violin_long,
                position = position_dodge(width = 0.9),
                colour = "black", fill = "white") +
   facet_wrap(~ feature, scales = "free_y") +
-  scale_fill_manual(values = c("parent" = "#FFA07A",
-                               "student" = "#45B7D1"),
-                    labels = c("Parents", "Children")) +
+  scale_fill_manual(values = c("parent" = "#FFA07A", "child" = "#45B7D1"),
+                    labels = c("Parent", "Child"),
+                    breaks = c("parent", "child"),
+                    drop = FALSE) +
   labs(
     title = "Distributions of Audio Features for Parents and Children",
     x = NULL,
@@ -373,8 +382,11 @@ violin_features <- ggplot(violin_long,
     plot.title  = element_text(size = 13),
     strip.text  = element_text(face = "bold"),
     legend.title = element_blank(),
-    legend.position = "bottom"
+    legend.position = c(0.8,0.25)
   )
+
+
+
 
 ```
 # Main Page
@@ -529,7 +541,6 @@ violin_features
 ```
 ### Row 2
 Points that represent the music profile are widely scattered around the line, suggesting that some family pairs share similar preferences while others diverge in different directions. This pattern is consistent with the small slope and non‑significant p‑value.
-
 The violin plots are not perfectly identical. Small shifts in the centres or tails hint that children may lean slightly toward more energetic, higher‑tempo tracks, whereas parents sometimes show somewhat more moderate values. However, these differences are subtle and consistent with the statistical tests reported.
 
 ## Column 2 {width = "30%"}
@@ -649,4 +660,11 @@ time spans rather than relying on current favourites. Larger and more diverse sa
 :::{.card}
 Returning to the everyday experience that motivated this study, childhood listening
 moments, such as sitting in the backseat while a parent chose the music, may not determine the sound of the playlists people create later in life. However, they may still play a role in shaping how individuals listen to, explore, and relate to music over time. Intergenerational influence in music preferences appears to be less about inheritance and more about interaction within a changing musical environment.
+
+<div style="text-align: center; margin-top: 20px;">
+![The Backseat](image/backseat.jpe){width=90%}
+</div>
 :::
+
+
+
