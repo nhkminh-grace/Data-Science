@@ -1,6 +1,6 @@
 ---
 title: \small Intergenerational Similarity in Musical Preferences
-author: Mysterious Group
+author: Group 2
 format:
   dashboard:
     theme: journal
@@ -15,10 +15,16 @@ editor:
 ```{r setup}
 #| include: false
 library(readr)
+library(tidytable)
 library(dplyr)
 library(stringr)
 library(ggplot2)
 library(tidyr)
+library(purrr)
+library(tibble)
+library(plotly)
+library(knitr)
+library(kableExtra)
 
 df <- read_delim(
   "combined_table_with_audio_features_filled.csv",
@@ -65,7 +71,6 @@ plot_df <- pivot %>%
   ) %>%
   select(pair_id, parent_tempo, child_tempo, distance)
 
-library(plotly)
 
 plot1 <- ggplotly(
   ggplot(plot_df, aes(
@@ -90,7 +95,6 @@ df2 <- df2 %>%
     role = str_extract(as.character(Q21), "(student|parent)")
   )
 
-# ===== 2. GET FREQUENCY DATA (value_counts equivalent) =====
 # Children: Q13, Parents: Q28 [web:11][web:16][web:19]
 child_freq <- df2 %>%
   filter(role == "student", !is.na(Q13)) %>%
@@ -135,7 +139,6 @@ freq_long <- child_freq %>%
                             levels = str_replace_all(category_order, "\\.", "") %>% str_trim())
   )
 
-# ===== 3. CREATE SIDE-BY-SIDE BAR CHART =====
 plot2 <- ggplot(freq_long,
        aes(x = category_clean, y = count, fill = group)) +
   geom_bar(stat = "identity",
@@ -163,6 +166,183 @@ plot2 <- ggplot(freq_long,
     legend.text = element_text(size = 12)
   )
 
+plot_long <- bind_rows(lapply(features, function(f) {
+
+  parent_col <- paste0(f, "_parent")
+  child_col  <- paste0(f, "_child")
+
+  pivot %>%
+    select(pair_id,
+           parent = all_of(parent_col),
+           child  = all_of(child_col)) %>%
+    mutate(feature = f)
+
+}))
+
+plot_all <- ggplot(plot_long,
+                   aes(x = parent, y = child)) +
+  geom_point(alpha = 0.7) +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~ feature, scales = "free") +
+  labs(
+    title = "Parent–Child Audio Feature Correlations",
+    x = "Parent Feature Value",
+    y = "Child Feature Value"
+  ) +
+  theme_minimal()
+
+feature_corr <- plot_all
+
+library(GGally)
+
+# extract only feature columns
+feature_data <- avg %>%
+  select(all_of(features))
+
+# correlation matrix plot
+plot_corr <- ggpairs(
+  feature_data,
+  lower = list(continuous = "points"),
+  diag  = list(continuous = "densityDiag"),
+  upper = list(continuous = "cor")
+)
+
+corr <- plot_corr
+
+
+cor_results <- map_df(features, \(f){
+
+  parent <- pivot[[paste0(f, "_parent")]]
+  child  <- pivot[[paste0(f, "_child")]]
+
+  test <- cor.test(parent, child)
+
+  tibble(
+    feature = f,
+    correlation = unname(test$estimate),
+    p_value = test$p.value
+  )
+})
+
+
+ttest_results <- map_df(features, function(f){
+
+  parent_col <- paste0(f, "_parent")
+  child_col  <- paste0(f, "_child")
+
+  test <- t.test(
+    pivot[[parent_col]],
+    pivot[[child_col]],
+    paired = TRUE
+  )
+
+  tibble(
+    feature = f,
+    p_value = test$p.value
+  )
+})
+
+ttest_results <- ttest_results |>
+  mutate(
+    mean_diff = purrr::map_dbl(feature, function(f) {
+      parent_col <- paste0(f, "_parent")
+      child_col  <- paste0(f, "_child")
+      mean(pivot[[child_col]] - pivot[[parent_col]], na.rm = TRUE)
+    })
+  )
+
+
+reg_results <- map_df(features, function(f){
+
+  parent_col <- paste0(f, "_parent")
+  child_col  <- paste0(f, "_child")
+
+  model <- lm(pivot[[child_col]] ~ pivot[[parent_col]])
+
+  broom::tidy(model)[2,] %>%
+    mutate(feature = f)
+})
+
+q18_cols <- paste0("Q18_", 1:20)
+q31_cols <- paste0("Q31_", 1:20)
+
+df2_num <- df2 |>
+  dplyr::mutate(
+    dplyr::across(all_of(c(q18_cols, q31_cols)),
+                  ~ suppressWarnings(as.numeric(as.character(.x))))
+  ) |>
+  dplyr::mutate(
+    music_profile_child  = rowMeans(dplyr::across(all_of(q18_cols)), na.rm = TRUE),
+    music_profile_parent = rowMeans(dplyr::across(all_of(q31_cols)), na.rm = TRUE),
+    role        = stringr::str_extract(as.character(Q21), "(student|parent)"),
+    family_code = stringr::str_trim(as.character(Q20))
+  )
+
+paired_profiles <- df2_num |>
+  dplyr::select(family_code, role,
+                music_profile_child, music_profile_parent) |>
+  dplyr::group_by(family_code, role) |>
+  dplyr::summarise(
+    music_profile_child  = mean(music_profile_child,  na.rm = TRUE),
+    music_profile_parent = mean(music_profile_parent, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  tidyr::pivot_wider(
+    names_from  = role,
+    values_from = c(music_profile_child, music_profile_parent)
+  ) |>
+  dplyr::transmute(
+    family_code,
+    child_profile  = music_profile_child_student,
+    parent_profile = music_profile_parent_parent
+  ) |>
+  tidyr::drop_na()
+
+
+reg_mod <- lm(child_profile ~ parent_profile, data = paired_profiles)
+coef_mod <- coef(reg_mod)
+b0 <- round(coef_mod[1], 2)
+b1 <- round(coef_mod[2], 2)
+
+plot_reg_panel <- ggplot(paired_profiles) +
+  geom_point(
+    aes(x = parent_profile, y = child_profile, colour = "Pairs"),
+    size = 4, alpha = 0.7
+  ) +
+  geom_smooth(
+    aes(x = parent_profile, y = child_profile, colour = "Regression line"),
+    method = "lm", se = FALSE, linewidth = 1
+  ) +
+  scale_colour_manual(
+    name   = NULL,
+    values = c("Pairs" = "blue", "Regression line" = "red")
+  ) +
+  labs(
+    title = "Parent–Child Average Music Profile",
+    x = "Parent Music Profile (1–7)",
+    y = "Child Music Profile (1–7)"
+  ) +
+  coord_cartesian(xlim = c(2.5, 6.5), ylim = c(2.0, 5.5)) +
+  theme_minimal() +
+  theme(
+    plot.title      = element_text(size = 13),
+    axis.title      = element_text(size = 11),
+    legend.position = c(0.98, 0.5)
+  ) +
+  annotate(
+    "text",
+    x = 3.0, y = 5.3,  # adjust position if needed
+    label = paste0("y\u0302 = ", b0, " + ", b1, " × x"),
+    hjust = 0,
+    size  = 3
+  )
+
+plot_reg_panel_interactive <- ggplotly(plot_reg_panel)
+feature_corr <- feature_corr +
+  theme(
+    plot.title = element_text(size = 13),
+    axis.title = element_text(size = 12)
+  )
 
 ```
 # Main Page
@@ -189,7 +369,11 @@ parents’ and children’s favourite songs directly using these features.
 
 ### Row 1
 
-Graph Explanation
+The dashboard below combines our quantitative analyses with an interactive
+visual narrative. The first visualization highlights how a single feature
+(tempo) relates across dyads while encoding overall feature distance, tempo is found to be the highest correlated feature across each pair in our survey. The second
+summarizes weekly listening habits, illustrating how often parents and
+children listen to music in everyday life.
 
 ### Row 2 {.tabset}
 
@@ -211,7 +395,7 @@ plot2
 <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5Fzpjl4MhZyiSvy6JSeAW4?utm_source=generator" width="100%" height="650" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 # Methodology
 
-## Column {width="25%"}
+## Column 1 {width="25%"}
 
 ::: {.valuebox icon="people-fill" color="primary"}
 **Total Participants**  
@@ -228,12 +412,199 @@ plot2
 24
 :::
 
-::: {.valuebox icon="calculator" color="secondary"}
-**Average Gold-MSI Score**  
-78.6
+
+
+## Column 2 {width = "45%"}
+### Study Design
+Participants were recruited in parent–child pairs and completed an online survey
+in which each person listed their three current favourite songs. These
+tracks formed the basis for our acoustic analyses. In addition, we collected
+demographic information, weekly music listening time, and indicators of musical
+background such as past or present instrument playing.
+
+We linked all reported songs to Spotify track identifiers and, using a playlist
+export tool, retrieved song‑level audio features, including energy, valence,
+tempo, danceability, acousticness, and loudness. For each participant, we
+computed an individual music profile by averaging features across their
+three songs, yielding one profile for each parent and each child.
+
+### Correlation Structure
+
+```{r}
+corr
+```
+
+
+## Column 3 {width="30%"}
+
+### Measures at a Glance {.tabset}
+
+#### Interpretation
+::: {.card}
+Within individuals, audio features show meaningful structure—for example,
+high‑energy tracks tend to be less acoustic and often faster—indicating that our
+feature set captures coherent aspects of musical sound. However, this internal
+structure does not translate into a clear intergenerational signature.
 :::
 
-## Column {width="50%"}
+#### Data & Features
 
-# Results
+::: {.card}
+Participants reported three current favourite songs each, yielding 144 unique
+tracks that form the core dataset for our similarity analyses.
 
+We also collected demographic information, weekly music listening time, and
+instrumental background. Although STOMP genre preferences were measured, the
+dashboard focuses on song‑level audio features such as energy, valence, tempo,
+danceability, acousticness, and loudness.
+:::
+
+#### Analytical Strategy
+
+::: {.card}
+Each parent–child pair is treated as a dyadic unit. We summarise audio features
+for parents and children separately, then assess intergenerational similarity by:
+
+- Computing the average music profile based on STOMP.
+- Computing Pearson correlations for each feature within dyads.  
+- Testing mean differences with paired t‑tests.  
+- Fitting simple regressions predicting child features from parent features.
+
+This design allows us to test whether parents’ favourite songs resemble their
+children’s at the level of acoustic characteristics rather than genre labels.
+:::
+
+# Results & Discussion
+## Column 1 {width ="70%"}
+### Row 1 {.tabset}
+
+```{r}
+#| title: Parent - Child Feature Correlation Plot
+#| fig-height: 6
+feature_corr
+```
+
+```{r}
+#| title: Average Music Profile Regression Plot
+#| fig-height: 5
+plot_reg_panel_interactive
+```
+
+### Row 2
+Points that represent the music profile are widely scattered around the line, suggesting that some family pairs share similar preferences while others diverge in different directions. This pattern is consistent with the small slope and non‑significant p‑value.
+
+## Column 2 {width = "30%"}
+### Quantitative Summary {.tabset}
+
+#### Parent-Child Correlation
+:::{.card}
+```{r}
+cor_results |>
+  mutate(
+    correlation = round(correlation, 3),
+    p_value     = signif(p_value, 3)
+  ) |>
+  select(
+    Feature = feature,
+    `Parent - Child r` = correlation,
+    `p value`        = p_value
+  ) |>
+  kbl(
+    caption = "Pearson correlations between parents’ and children’s audio-feature profiles.",
+    align   = c("l", "r", "r")
+  ) |>
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width = FALSE,
+    position   = "center"
+  ) |>
+  column_spec(2, bold = TRUE)
+```
+For all features, parent-child correlations are small and non‑significant. Even
+tempo, which might be expected to show familial continuity through shared
+contexts such as driving or household music, fails to exhibit a robust
+relationship. These estimates argue against a strong predictive link from
+parent to child at the level of acoustic features.
+:::
+
+#### Mean Differences between Generations
+:::{.card}
+```{r}
+ttest_results |>
+  mutate(
+    mean_diff = round(mean_diff, 3),
+    p_value   = signif(p_value, 3)
+  ) |>
+  select(
+    Feature = feature,
+    `Mean Difference\n(Parent - Child)` = mean_diff,
+    `p value`                            = p_value
+  ) |>
+  kbl(
+    caption = "Paired mean differences between children’s and parents’ favourite-song features.",
+    align   = c("l", "r", "r")
+  ) |>
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width = FALSE,
+    position   = "center"
+  ) |>
+  column_spec(2, bold = TRUE)
+
+```
+Paired t‑tests reveal no consistent pattern of mean differences between parents
+and children. Where differences exist, they are small and not statistically significant.
+:::
+
+#### Simple Regression Model
+:::{.card}
+```{r}
+reg_results |>
+  mutate(
+    estimate  = round(estimate, 3),
+    std.error = round(std.error, 3),
+    statistic = round(statistic, 2),
+    p.value   = signif(p.value, 3)
+  ) |>
+  select(
+    Feature = feature,
+    `Parent - Child Slope` = estimate,
+    `Std. Error` = std.error,
+    `t value` = statistic,
+    `p value` = p.value
+  ) |>
+  kbl(
+    caption = "Regression slopes predicting children’s audio features from parents’ features.",
+    align = c("l", "r", "r", "r", "r")
+  ) |>
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width = FALSE,
+    position = "center"
+  )
+```
+Regressing each child feature on the corresponding parent feature yields slopes
+that are small and statistically uncertain. In practical terms, knowing a
+parent’s favourite‑song profile tells us little about the child’s profile. These
+regression results align with the overall Pearson correlation reported in the
+written report (r ≈ 0, p ≫ .05) and reinforce the conclusion that direct
+acoustic inheritance is weak at best.
+:::
+
+#### Discussion
+:::{.card}
+ Across a range of audio features, including energy, valence,
+tempo, and danceability, we found no statistically significant evidence for intergenerational similarity. Parents’ and children’s aggregated music profiles showed substantial overlap, but no reliable predictive relationship emerged at the dyadic level. 
+
+While parents likely shape early listening environments, these influences appear to be mediated by many other factors over time. Peer groups, personal exploration, changing cultural trends, and algorithmic recommendation systems may play a stronger role in shaping contemporary music preferences than early exposure alone. Importantly, this does not imply that parents have no influence on their children’s musical development. Rather, the findings suggest that such influence may be indirect or contextual, affecting how individuals engage with music rather than the specific sound characteristics of the
+songs they later prefer. Early listening experiences may shape habits, openness, or emotional associations with music without leaving a clear acoustic fingerprint in adult playlists.
+
+Several limitations should be considered when interpreting these findings. First, the
+sample size was relatively small, which limits statistical power and reduces the likelihood of detecting subtle effects. Second, the analysis focused on participants’ current favourite songs, which may reflect recent preferences rather than long-term listening patterns shaped earlier in life. Third, although audio features provide an objective description of musical sound, they do not capture the personal, emotional, or contextual meanings that individuals attach to music. Additionally, musical similarity may manifest differently across genres, contexts, or listening situations, which were not explicitly modeled in the present analyses.
+:::
+
+#### Conclusion
+:::{.card}
+Returning to the everyday experience that motivated this study, childhood listening
+moments, such as sitting in the backseat while a parent chose the music, may not determine the sound of the playlists people create later in life. However, they may still play a role in shaping how individuals listen to, explore, and relate to music over time. Intergenerational influence in music preferences appears to be less about inheritance and more about interaction within a changing musical environment.
+:::
