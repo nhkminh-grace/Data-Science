@@ -344,6 +344,38 @@ feature_corr <- feature_corr +
     axis.title = element_text(size = 12)
   )
 
+# Long format: one row per person × feature
+violin_long <- avg |>
+  tidyr::pivot_longer(
+    cols = all_of(features),
+    names_to = "feature",
+    values_to = "value"
+  )
+
+# Violin plots: parents vs children for each feature
+violin_features <- ggplot(violin_long,
+                          aes(x = role, y = value, fill = role)) +
+  geom_violin(trim = FALSE, alpha = 0.6) +
+  geom_boxplot(width = 0.15, outlier.size = 0.8,
+               position = position_dodge(width = 0.9),
+               colour = "black", fill = "white") +
+  facet_wrap(~ feature, scales = "free_y") +
+  scale_fill_manual(values = c("parent" = "#FFA07A",
+                               "student" = "#45B7D1"),
+                    labels = c("Parents", "Children")) +
+  labs(
+    title = "Distributions of Audio Features for Parents and Children",
+    x = NULL,
+    y = "Feature value"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title  = element_text(size = 13),
+    strip.text  = element_text(face = "bold"),
+    legend.title = element_blank(),
+    legend.position = "bottom"
+  )
+
 ```
 # Main Page
 
@@ -441,8 +473,8 @@ corr
 
 #### Interpretation
 ::: {.card}
-Within individuals, audio features show meaningful structure—for example,
-high‑energy tracks tend to be less acoustic and often faster—indicating that our
+Within individuals, audio features show meaningful structure, for example,
+high‑energy tracks tend to be less acoustic and often faster, indicating that our
 feature set captures coherent aspects of musical sound. However, this internal
 structure does not translate into a clear intergenerational signature.
 :::
@@ -490,8 +522,15 @@ feature_corr
 plot_reg_panel_interactive
 ```
 
+```{r}
+#| title: Distribution of Audio Features
+#| fig-height: 5
+violin_features
+```
 ### Row 2
 Points that represent the music profile are widely scattered around the line, suggesting that some family pairs share similar preferences while others diverge in different directions. This pattern is consistent with the small slope and non‑significant p‑value.
+
+The violin plots are not perfectly identical. Small shifts in the centres or tails hint that children may lean slightly toward more energetic, higher‑tempo tracks, whereas parents sometimes show somewhat more moderate values. However, these differences are subtle and consistent with the statistical tests reported.
 
 ## Column 2 {width = "30%"}
 ### Quantitative Summary {.tabset}
@@ -601,6 +640,9 @@ songs they later prefer. Early listening experiences may shape habits, openness,
 
 Several limitations should be considered when interpreting these findings. First, the
 sample size was relatively small, which limits statistical power and reduces the likelihood of detecting subtle effects. Second, the analysis focused on participants’ current favourite songs, which may reflect recent preferences rather than long-term listening patterns shaped earlier in life. Third, although audio features provide an objective description of musical sound, they do not capture the personal, emotional, or contextual meanings that individuals attach to music. Additionally, musical similarity may manifest differently across genres, contexts, or listening situations, which were not explicitly modeled in the present analyses.
+
+Future research could build on this work by examining listening histories over longer
+time spans rather than relying on current favourites. Larger and more diverse samples would improve statistical power and generalizability. Combining acoustic features with contextual data, such as shared listening moments, family music practices, or algorithmic exposure, may also provide a more comprehensive understanding of how musical preferences develop across generations.
 :::
 
 #### Conclusion
